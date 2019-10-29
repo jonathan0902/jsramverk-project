@@ -298,7 +298,8 @@ export default {
     this.socket.emit('getAllOnline')
   },
   beforeRouteLeave () {
-        this.getStocks();
+    this.getStocks();
+    this.getUserStocks();
   },
   data: () => ({
     drawer: null,
