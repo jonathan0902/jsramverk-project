@@ -173,7 +173,6 @@ export default {
   },
   sockets: {
     connect: function () {
-      this.getUserStocks();
     },
     getAllOnline(tokenFromServer) {
       let dre = []
@@ -249,7 +248,6 @@ export default {
         company: this.lastURLSegment
       })
       .then((response) => {
-        alert(JSON.stringify(response))
         this.currentstocks = response.data.amount;
       });
     },
@@ -287,6 +285,9 @@ export default {
       this.email = localStorage.getItem('email');
     }
     this.getValue();
+  },
+  updated () {
+    this.getUserStocks();
   },
   created () {
     this.$vuetify.theme.dark = true;
