@@ -192,13 +192,13 @@ export default {
       this.$router.go('/stocks')
     },
     stocks() {
-      axios.get('http://localhost:8333/stock/companys/')
+      axios.get('https://project-backend.jhellberg.me/stock/companys/')
       .then((response) => {
         this.stock = response.data.res;
       });
     },
     getValue() {
-      axios.post('http://localhost:8333/money/get/', {
+      axios.post('https://project-backend.jhellberg.me/money/get/', {
         email: this.email
       })
       .then((response) => {
@@ -214,7 +214,7 @@ export default {
     getStocks() {
       const pageURL = decodeURI(window.location.href);
       this.lastURLSegment = pageURL.substr(pageURL.lastIndexOf('/') + 1);
-      axios.post('http://localhost:8333/stock/get', {
+      axios.post('https://project-backend.jhellberg.me/stock/get', {
         email: this.email,
         company: this.lastURLSegment
       })
@@ -225,7 +225,7 @@ export default {
     getMap() {
       const pageURL = decodeURI(window.location.href);
       this.lastURLSegment = pageURL.substr(pageURL.lastIndexOf('/') + 1);
-      axios.post('http://localhost:8333/stock/get/map/', {
+      axios.post('https://project-backend.jhellberg.me/stock/get/map/', {
         company: this.lastURLSegment
       })
       .then((response) => {
@@ -236,7 +236,7 @@ export default {
     },
     tradeStocks() {
       if(this.select == "Buy") {
-        axios.post('http://localhost:8333/stock/buy/', {
+        axios.post('https://project-backend.jhellberg.me/stock/buy/', {
           email: this.email,
           company: this.lastURLSegment,
           amount: this.amount,
@@ -246,7 +246,7 @@ export default {
           this.getValue();
         });
       } else if (this.select == "Sell") {
-        axios.post('http://localhost:8333/stock/sell/', {
+        axios.post('https://project-backend.jhellberg.me/stock/sell/', {
           email: this.email,
           company: this.lastURLSegment,
           amount: this.amount,
@@ -269,7 +269,7 @@ export default {
     this.stocks();
     this.getStocks();
     this.getMap();
-    this.socket = io('http://localhost:8300');
+    this.socket = io('https://stock-server.jhellberg.me');
     this.socket.emit('getAllOnline')
   },
   beforeRouteLeave () {

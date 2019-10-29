@@ -107,13 +107,13 @@ export default {
   },
   methods: {
     stocks() {
-      axios.get('http://localhost:8333/stock/companys/')
+      axios.get('https://project-backend.jhellberg.me/stock/companys/')
       .then((response) => {
         this.stock = response.data.res;
       });
     },
     getValue() {
-      axios.post('http://localhost:8333/money/get/', {
+      axios.post('https://project-backend.jhellberg.me/money/get/', {
         email: this.email
       })
       .then((response) => {
@@ -127,7 +127,7 @@ export default {
       })
     },
     addMoney() {
-      axios.post('http://localhost:8333/money/add/', {
+      axios.post('https://project-backend.jhellberg.me/money/add/', {
         email: this.email,
         money: this.money
       })
