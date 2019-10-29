@@ -259,7 +259,6 @@ export default {
           amount: this.amount,
           price: this.currentprice
         }).then((response) => {
-          alert(JSON.stringify(response))
           if(response.data.status == "true") {
             this.getStocks();
             this.getValue();
@@ -274,8 +273,12 @@ export default {
           amount: this.amount,
           price: this.currentprice
         }).then(() => {
-          this.getStocks();
-          this.getValue();
+          if(response.data.status == "true") {
+            this.getStocks();
+            this.getValue();
+          } else {
+            alert("Need more Pancake Batter to buy this stock/stocks")
+          }
         });
       }
     },
