@@ -249,6 +249,7 @@ export default {
         company: this.lastURLSegment
       })
       .then((response) => {
+        alert(response)
         this.currentstocks = response.data.amount;
       });
     },
