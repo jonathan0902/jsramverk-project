@@ -166,7 +166,7 @@ export default {
   },
   sockets: {
     connect: function () {
-      alert('socket connected')
+      
     },
     getAllOnline(tokenFromServer) {
       let dre = []
