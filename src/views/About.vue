@@ -272,7 +272,7 @@ export default {
           company: this.lastURLSegment,
           amount: this.amount,
           price: this.currentprice
-        }).then(() => {
+        }).then((response) => {
           if(response.data.status == "true") {
             this.getStocks();
             this.getValue();
