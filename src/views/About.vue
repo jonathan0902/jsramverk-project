@@ -370,7 +370,9 @@ export default {
     margin-top: 50px;
     margin-bottom: 50px;
   }
+}
 
+  @media only screen and (max-width: 732px) {
   .margintwo {
     left: 0px;
     right: 0px;
