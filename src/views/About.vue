@@ -277,7 +277,7 @@ export default {
             this.getStocks();
             this.getValue();
           } else {
-            alert("Need more Pancake Batter to buy this stock/stocks")
+            alert("Can't sell that many stock/stocks")
           }
         });
       }
