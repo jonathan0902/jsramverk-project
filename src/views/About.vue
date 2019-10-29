@@ -143,11 +143,12 @@
                 <v-btn class="mr-4" @click="tradeStocks">Trade</v-btn>
               </form>
             </v-card>
-            <v-card class="margin">
+            <v-card>
               <v-card-title><h4>Stocks</h4></v-card-title>
               <v-divider></v-divider>
-                
-              <span>{{ this.lastURLSegment }}: {{ this.currentstocks }}
+                <div class="padding">
+                  <span>{{ this.lastURLSegment }}: {{ this.currentstocks }}
+                </div>
             </v-card>
         </v-row>
       </v-container>
@@ -248,8 +249,7 @@ export default {
         company: this.lastURLSegment
       })
       .then((response) => {
-        alert(response)
-        this.currentstocks = response.data;
+        this.currentstocks = response.data.amount;
       });
     },
     tradeStocks() {
@@ -345,6 +345,7 @@ export default {
 
   .margin {
     left: 50px;
+    right: 50px;
   }
 
   .true {
@@ -362,6 +363,7 @@ export default {
   @media only screen and (max-width: 600px) {
   .margin {
     left: 0px;
+    right: 0px;
     margin-top: 50px;
     margin-bottom: 50px;
   }
