@@ -7,7 +7,7 @@ import Trend from "vuetrend"
 import VueSocketIOExt from 'vue-socket.io-extended';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:8300');
+const socket = io('https://stock-server.jhellberg.me');
  
 Vue.use(VueSocketIOExt, socket);
 
