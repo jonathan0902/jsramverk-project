@@ -249,7 +249,7 @@ export default {
         company: this.lastURLSegment
       })
       .then((response) => {
-        this.currentstocks = amount;
+        this.currentstocks = response.amount;
       });
     },
     tradeStocks() {
