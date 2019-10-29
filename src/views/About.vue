@@ -249,7 +249,7 @@ export default {
         company: this.lastURLSegment
       })
       .then((response) => {
-        alert(response)
+        alert(JSON.stringify(response))
         this.currentstocks = response.data.amount;
       });
     },
