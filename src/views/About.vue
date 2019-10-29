@@ -173,7 +173,7 @@ export default {
   },
   sockets: {
     connect: function () {
-      
+      this.getUserStocks();
     },
     getAllOnline(tokenFromServer) {
       let dre = []
