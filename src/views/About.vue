@@ -143,7 +143,7 @@
                 <v-btn class="mr-4" @click="tradeStocks">Trade</v-btn>
               </form>
             </v-card>
-            <v-card>
+            <v-card class="margintwo">
               <v-card-title><h4>Stocks</h4></v-card-title>
               <v-divider></v-divider>
                 <div class="padding">
@@ -345,7 +345,10 @@ export default {
 
   .margin {
     left: 50px;
-    right: 50px;
+  }
+
+  .margintwo {
+    left: 100px;
   }
 
   .true {
@@ -362,6 +365,13 @@ export default {
 
   @media only screen and (max-width: 600px) {
   .margin {
+    left: 0px;
+    right: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .margintwo {
     left: 0px;
     right: 0px;
     margin-top: 50px;
