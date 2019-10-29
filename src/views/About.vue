@@ -242,7 +242,7 @@ export default {
           amount: this.amount,
           price: this.currentprice
         }).then((response) => {
-          alert(response)
+          alert(JSON.stringify(response))
 
         });
       } else if (this.select == "Sell") {
