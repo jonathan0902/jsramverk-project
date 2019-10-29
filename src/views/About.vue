@@ -241,9 +241,9 @@ export default {
           company: this.lastURLSegment,
           amount: this.amount,
           price: this.currentprice
-        }).then(() => {
-          this.getStocks();
-          this.getValue();
+        }).then((response) => {
+          alert(response)
+
         });
       } else if (this.select == "Sell") {
         axios.post('https://project-backend.jhellberg.me/stock/sell/', {
