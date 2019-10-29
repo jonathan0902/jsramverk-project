@@ -143,6 +143,12 @@
                 <v-btn class="mr-4" @click="tradeStocks">Trade</v-btn>
               </form>
             </v-card>
+            <v-card class="margin">
+              <v-card-title><h4>Stocks</h4></v-card-title>
+              <v-divider></v-divider>
+                
+              <span>{{ this.lastURLSegment }}: {{ this.currentstocks }}
+            </v-card>
         </v-row>
       </v-container>
     </v-content>
@@ -234,6 +240,18 @@ export default {
         this.color = response.data.state;
       });
     },
+    getUserStocks() {
+      const pageURL = decodeURI(window.location.href);
+      this.lastURLSegment = pageURL.substr(pageURL.lastIndexOf('/') + 1);
+      axios.post('https://project-backend.jhellberg.me/stock/amount', {
+        email: this.email,
+        company: this.lastURLSegment
+      })
+      .then((response) => {
+        alert(response)
+        this.currentstocks = response.data;
+      });
+    },
     tradeStocks() {
       if(this.select == "Buy") {
         axios.post('https://project-backend.jhellberg.me/stock/buy/', {
@@ -243,7 +261,12 @@ export default {
           price: this.currentprice
         }).then((response) => {
           alert(JSON.stringify(response))
-
+          if(response.data.status == "true") {
+            this.getStocks();
+            this.getValue();
+          } else {
+            alert("Need more Pancake Batter to buy this stock/stocks")
+          }
         });
       } else if (this.select == "Sell") {
         axios.post('https://project-backend.jhellberg.me/stock/sell/', {
@@ -269,6 +292,7 @@ export default {
     this.stocks();
     this.getStocks();
     this.getMap();
+    this.getUserStocks();
     this.socket = io('https://stock-server.jhellberg.me');
     this.socket.emit('getAllOnline')
   },
@@ -286,6 +310,7 @@ export default {
     amount: 0,
     select: "Buy",
     map: [],
+    currentstocks: 0,
     color: true,
     buysell: [
       "Buy",
